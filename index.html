@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    form {
+      margin: 0 auto;
+      width: 200px;
+      text-align: center;
+      padding: 2em;
+    }
+    input {
+      display: block;
+      width: 100%;
+    }
+
+    form > * {
+      margin: 0.25em 0;
+    }
+
+    input {
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="first_name">First name</label>
+    <input type="text" id="first_name">
+    <label for="last_name">Last name</label>
+    <input type="text" id="last_name">
+    <button>That's me</button>
+  </form>
+
+  <script type="module">
+    import { kit } from 'https://onfido.gitlab.eu-west-1.mgmt.onfido.xyz/sdks/capture-kit/Kit.js'
+    kit.init()
+      .then(kit => {
+        document.querySelector('form').addEventListener('submit', e => {
+          e.preventDefault()
+          kit.module.finish({
+            firstName: document.querySelector('#first_name').value,
+            lastName: document.querySelector('#last_name').value
+          })
+        })
+      })
+  </script>
+</body>
+</html>
