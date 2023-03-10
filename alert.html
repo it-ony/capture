@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    
+    <script type="module">
+        import {kit} from 'https://onfido.gitlab.eu-west-1.mgmt.onfido.xyz/sdks/capture-kit/Kit.js'
+
+        kit.init()
+            .then(kit => {
+                alert(`Hello ${kit.input.firstName} ${kit.input.firstName}`)
+                kit.module.finish({})
+            })
+    </script>
+</body>
+</html>
