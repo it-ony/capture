@@ -35,7 +35,7 @@
 
   <script type="module">
     import { kit } from 'https://onfido.gitlab.eu-west-1.mgmt.onfido.xyz/sdks/capture-kit/Kit.js'
-    kit.init()
+    kit().init()
       .then(kit => {
         document.querySelector('form').addEventListener('submit', e => {
           e.preventDefault()
